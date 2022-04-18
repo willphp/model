@@ -36,7 +36,7 @@ model组件用于对数据逻辑和存取进行处理
 	protected $createTime = 'ctime'; //创建时间字段(新增时自动写入)
 	protected $updateTime = 'uptime'; //更新时间字段(更新时自动写入)
 	protected $auto = []; //自动完成设置	
-      protected $filter = [];	 //自动过滤设置
+        protected $filter = [];	//自动过滤设置
 	protected $validate = []; //自动验证设置	
 
 ####模型常量
