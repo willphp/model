@@ -36,7 +36,7 @@ model组件用于对数据逻辑和存取进行处理
 	protected $createTime = 'ctime'; //创建时间字段(新增时自动写入)
 	protected $updateTime = 'uptime'; //更新时间字段(更新时自动写入)
 	protected $auto = []; //自动完成设置	
-        protected $filter = [];	//自动过滤设置
+	protected $filter = [];	//自动过滤设置
 	protected $validate = []; //自动验证设置	
 
 ####模型常量
@@ -70,8 +70,8 @@ model组件用于对数据逻辑和存取进行处理
 
 	//格式：[字段名, 验证规则, 错误信息, 验证条件, 处理时机]
 	protected $validate=[
-			['username','unique','用户已存在',self::MUST_VALIDATE, self::MODEL_BOTH],
-			['status', '/^\d+$/', '状态必须是数字', self::MUST_VALIDATE, self::MODEL_BOTH]
+		['username','unique','用户已存在',self::MUST_VALIDATE, self::MODEL_BOTH],
+		['status', '/^\d+$/', '状态必须是数字', self::MUST_VALIDATE, self::MODEL_BOTH]
 	];
 
 更多验证规则请查看 willphp/validate 组件
