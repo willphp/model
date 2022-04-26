@@ -85,11 +85,7 @@ trait Validate {
 						$this->error[$field] = $error;
 					}
 				} else if (substr($method, 0, 1) == '/') {					
-<<<<<<< HEAD
 					if (!preg_match($method, $value)) {
-=======
-					if ( ! preg_match($method, $value)) {
->>>>>>> 522fe357e2d0f8752241d0cc984ec5668d1e646e
 						$this->error[$field] = $error;
 					}
 				}
