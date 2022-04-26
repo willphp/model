@@ -1,0 +1,30 @@
+{
+  "name": "willphp/model",
+  "description": "model组件用于对数据逻辑和存取进行处理",
+  "keywords": [
+    "willphp",
+    "一鱼框架",
+    "model",
+    "模型"
+  ],
+  "homepage": "http://www.113344.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "no-mind",
+      "email": "24203741@qq.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.6.0",
+    "willphp/db": "~1.0",
+    "willphp/collection": "~1.0",
+    "willphp/validate": "~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "willphp\\model\\": "src"
+    }
+  }
+}
