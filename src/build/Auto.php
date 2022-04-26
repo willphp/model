@@ -47,6 +47,7 @@ trait Auto {
 				//必须处理
 			}
 			if ($auto[4] == $this->action() || $auto[4] == self::MODEL_BOTH) {
+<<<<<<< HEAD
 				//为字段设置默认值				
 				if (empty($data[$auto[0]])) {
 					$data[$auto[0]] = '';					
@@ -58,6 +59,16 @@ trait Auto {
 						throw new \Exception($auto[1].' 函数不存在');
 					}
 					$data[$auto[0]] = $this->need_params($auto[1])? $auto[1]($data[$auto[0]]) : $auto[1]();
+=======
+				//为字段设置默认值
+				if (empty($data[$auto[0]])) {
+					$data[$auto[0]] = '';
+				}
+				if ($auto[2] == 'method') {
+					$data[$auto[0]] = call_user_func_array([$this, $auto[1]], [$data[$auto[0]], $data]);
+				} else if ($auto[2] == 'function') {
+					$data[$auto[0]] = $auto[1]($data[$auto[0]]);
+>>>>>>> 522fe357e2d0f8752241d0cc984ec5668d1e646e
 				} else if ($auto[2] == 'string') {
 					$data[$auto[0]] = $auto[1];
 				}
@@ -65,6 +76,7 @@ trait Auto {
 		}		
 		return true;
 	}
+<<<<<<< HEAD
 	/**
 	 * 检测函数是否需要参数 
 	 * @param string $func_name
@@ -74,4 +86,6 @@ trait Auto {
 		$reflect = new \ReflectionFunction($func_name);		
 		return !empty($reflect->getParameters());
 	}
+=======
+>>>>>>> 522fe357e2d0f8752241d0cc984ec5668d1e646e
 }

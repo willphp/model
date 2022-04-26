@@ -49,7 +49,11 @@ abstract class Model implements \ArrayAccess, \Iterator {
 	protected $pk = 'id'; //表自增主键
 	protected $db; //数据库驱动
 	protected $config = []; //数据库配置	
+<<<<<<< HEAD
 	protected $allowFill = ['*']; //允许填充字段	
+=======
+	protected $allowFill = []; //允许填充字段	
+>>>>>>> 522fe357e2d0f8752241d0cc984ec5668d1e646e
 	protected $denyFill = []; //禁止填充字段	
 	protected $data = []; //模型数据	
 	protected $fields = []; //读取字段	
@@ -166,6 +170,7 @@ abstract class Model implements \ArrayAccess, \Iterator {
 	 * @return bool
 	 * @throws \Exception
 	 */
+<<<<<<< HEAD
 	final public function save(array $data = []) {	
 		$this->fieldFillCheck($data); //自动填充数据处理	
 		//自动验证
@@ -178,6 +183,20 @@ abstract class Model implements \ArrayAccess, \Iterator {
 		if ($this->action() == self::MODEL_UPDATE) {
 			$this->original = array_merge($this->data, $this->original);			
 		}		
+=======
+	final public function save(array $data = []) {		
+		$this->fieldFillCheck($data); //自动填充数据处理		
+		$this->autoFilter(); //自动过滤		
+		$this->autoOperation(); //自动完成		
+		$this->formatFields(); //处理时期字段
+		if ($this->action() == self::MODEL_UPDATE) {
+			$this->original = array_merge($this->data, $this->original);			
+		}	
+		//自动验证
+		if (!$this->autoValidate()) {
+			return false;
+		}
+>>>>>>> 522fe357e2d0f8752241d0cc984ec5668d1e646e
 		//更新条件检测
 		$res = null;			
 		switch ($this->action()) {				
@@ -188,9 +207,12 @@ abstract class Model implements \ArrayAccess, \Iterator {
 				}
 				break;
 			case self::MODEL_INSERT:
+<<<<<<< HEAD
 				if (isset($this->original[$this->pk])) {
 					unset($this->original[$this->pk]);	
 				}
+=======
+>>>>>>> 522fe357e2d0f8752241d0cc984ec5668d1e646e
 				$res = $this->db->insertGetId($this->original);
 				if ($res) {
 					if (is_numeric($res) && $this->pk) {
