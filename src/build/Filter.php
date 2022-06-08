@@ -16,38 +16,34 @@ namespace willphp\model\build;
 trait Filter {
 	protected $filter = [];	 //自动过滤设置
 	/**
-	 * 自动过滤掉满足条件的字段
+	 * 自动过滤
 	 * @return void
 	 */
-	final protected function autoFilter() {	
+	final protected function autoFilter() {
 		if (empty($this->filter)) {
 			return;
 		}
 		$data = &$this->original;
 		foreach ($this->filter as $filter) {
-			//验证条件
-			$filter[1] = isset($filter[1]) ? $filter[1] : self::EXIST_AUTO;
-			//验证时间
-			$filter[2] = isset($filter[2]) ? $filter[2] : self::MODEL_BOTH;
-			//有这个字段处理
-			if ($filter[1] == self::EXIST_FILTER && ! isset($data[$filter[0]])) {
+			$field = $filter[0]; //字段
+			$at = isset($filter[1]) ? $filter[1] : AT_SET; //条件
+			$action = isset($filter[2]) ? $filter[2] : IN_BOTH; //时机
+			if ($at == AT_NOT_NULL && empty($data[$field])) {
 				continue;
-			} else if ($filter[1] == self::NOT_EMPTY_FILTER	&& empty($data[$filter[0]])) {
-				//不为空时处理
-				continue;
-			} else if ($filter[1] == self::EMPTY_FILTER	&& ! empty($data[$filter[0]])) {
-				//值为空时处理
-				continue;
-			} else if ($filter[1] == self::NOT_EXIST_FILTER	&& isset($data[$filter[0]])) {
-				//值为空时处理
-				continue;
-			} else if ($filter[1] == self::MUST_FILTER) {
-				//必须处理
 			}
-			if ($filter[2] == $this->action() || $filter[2] == self::MODEL_BOTH) {
+			if ($at == AT_NULL && !empty($data[$field])) {
+				continue;
+			}
+			if ($at == AT_SET && !isset($data[$field])) {
+				continue;
+			}
+			if ($at == AT_NOT_SET && isset($data[$field])) {
+				continue;
+			}
+			if ($action == $this->action() || $action == IN_BOTH) {
 				unset($data[$filter[0]]);
 			}
-		}		
+		}
 		return true;
 	}
 }

@@ -1,26 +1,27 @@
 {
   "name": "willphp/model",
-  "description": "model组件用于对数据逻辑和存取进行处理",
+  "description": "model组件是对数据进行处理的ORM框架",
   "keywords": [
     "willphp",
     "一鱼框架",
-    "model",
+    "ORM",
     "模型"
   ],
   "homepage": "http://www.113344.com/",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "authors": [
     {
-      "name": "no-mind",
+      "name": "无念",
       "email": "24203741@qq.com"
     }
   ],
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.6.0",
-    "willphp/db": "~1.0",
-    "willphp/collection": "~1.0",
-    "willphp/validate": "~1.0"
+    "willphp/config": "~1.1",
+    "willphp/db": "~1.1",
+    "willphp/collection": "~1.1",
+    "willphp/validate": "~1.1"
   },
   "autoload": {
     "psr-4": {
